@@ -7,8 +7,14 @@
   tags: ["packages","intellij"]
 
 - name: Download intellij
-  get_url: url={{intellij_url}} dest={{intellij_tmp}}
+  get_url: url={{intellij_url}} dest={{intellij_tmp}}/{{intellij_pkg_filename}}
   tags: ["packages","intellij"]
+  when: intellij_cached_copy is undefined
+
+- name: Copy intellij package
+  copy: src={{intellij_cached_copy}} dest={{intellij_tmp}}/{{intellij_pkg_filename}}
+  tags: ["packages","intellij"]
+  when: intellij_cached_copy is defined
 
 - name: Ensure installation directory
   file:
@@ -20,7 +26,7 @@
 - name: Unarchive intellij
   unarchive:
     copy=no
-    src={{intellij_tmp}}
+    src={{intellij_tmp}}/{{intellij_pkg_filename}}
     dest={{intellij_install_dir}}
   tags: ["packages","intellij"]
 
