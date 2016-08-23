@@ -1,4 +1,4 @@
 ---
 intellij_pkg_filename: "ideaI{{intellij_distribution_type}}-{{intellij_version}}{{intellij_pkg_extension}}"
-intellij_url: "https://download.jetbrains.com/idea/{{intellij_pkg_filename}}"
+intellij_url: "http://download.jetbrains.com/idea/{{intellij_pkg_filename}}"
 intellij_folder_name: "{{result_intellij_folder_name.stdout_lines.0}}"
